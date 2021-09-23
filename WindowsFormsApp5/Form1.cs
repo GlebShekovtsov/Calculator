@@ -20,6 +20,7 @@ namespace WindowsFormsApp5
             InitializeComponent();
             panel1.Show();
             panel2.Hide();
+            panel3.Hide();
         }
 
         private void button_num1_Click(object sender, EventArgs e)
@@ -140,12 +141,135 @@ namespace WindowsFormsApp5
         {
             panel1.Hide();
             panel2.Show();
+            panel3.Hide();
         }
 
         private void обычныйРежимToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Show();
             panel2.Hide();
+            panel3.Hide();
+        }
+        private void режимПрограммистаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Hide();
+            panel2.Hide();
+            panel3.Show();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (radioButton_smtonm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a * 10000000;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if (radioButton_smtodm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a / 10;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if(radioButton_smtom.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a / 100;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if (radioButton_smtokm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a / 1000;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if(radioButton_nmtosm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a / 1e+7;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if (radioButton_dmtosm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a * 10;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if (radioButton_mtosm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a * 100;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+            else if (radioButton_kmtosm.Checked)
+            {
+                double a = Convert.ToDouble(textBox_value.Text);
+                double b = a * 1000;
+                textBox_transvalue.Text = Convert.ToString($"{b}");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(radioButton_FromTtoD.Checked)
+            {
+                int value = Convert.ToInt32(textBox3.Text);
+                string BinaryCode = Convert.ToString(value, 2);
+                textBox2.Text = BinaryCode;
+            } 
+            if (radioButton_fromDtoT.Checked)
+            {
+                ulong num = 0, ost = 0, result = 0, count = 0, s = 0;
+                num = Convert.ToUInt32(textBox3.Text);
+                while (num > 0)
+                {
+                    ost = num % 10;
+                    s = Convert.ToUInt64(Math.Pow(2, count));
+                    result = result + ost * s;
+                    count += 1;
+                    num = num / 10;
+                }
+                textBox2.Text = Convert.ToString(result);
+            }
+            if (radioButton_fromTtoE.Checked)
+            {
+                int value = Convert.ToInt32(textBox3.Text);
+                string BinaryCode = Convert.ToString(value, 8);
+                textBox2.Text = BinaryCode;
+            }
+            if (radioButton_fromEtoT.Checked)
+            {
+                ulong num = 0, ost = 0, result = 0, count = 0, s = 0;
+                num = Convert.ToUInt32(textBox3.Text);
+                while (num > 0)
+                {
+                    ost = num % 10;
+                    s = Convert.ToUInt64(Math.Pow(8, count));
+                    result = result + ost * s;
+                    count += 1;
+                    num = num / 10;
+                }
+                textBox2.Text = Convert.ToString(result);
+            }
+            if (radioButton_fromTtoHEX.Checked)
+            {
+                int value = Convert.ToInt32(textBox3.Text);
+                string BinaryCode = Convert.ToString(value, 16);
+                textBox2.Text = BinaryCode;
+            }
+            if (radioButton_fromHEXtoT.Checked)
+            {
+                ulong num = 0, ost = 0, result = 0, count = 0, s = 0;
+                num = Convert.ToUInt32(textBox3.Text);
+                while (num > 0)
+                {
+                    ost = num % 10;
+                    s = Convert.ToUInt64(Math.Pow(16, count));
+                    result = result + ost * s;
+                    count += 1;
+                    num = num / 10;
+                }
+                textBox2.Text = Convert.ToString(result);
+            }
         }
 
         private void calculate()
